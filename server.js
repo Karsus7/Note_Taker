@@ -3,7 +3,7 @@ var path = require("path");
 var fs = require("fs");
 
 
-// Express App
+// Express App Code
 // =========================================
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -16,8 +16,7 @@ app.use(express.json());
 // this is required for the sendFiles to actually be able to access relative path files like CSS and JS
 app.use(express.static(__dirname + '/public'));
 
-// Notes
-// =========================================
+// Notes array
 const notes = [];
 
 // =============================================================
@@ -87,14 +86,13 @@ app.delete('/api/notes/:id', function(req, res){
 })
 
 
-//ERROR
+// Error Report
 app.get('*', function(req, res){
     res.sendFile(path.join(__dirname , 'public' , 'index.html'));
 });
 
-// =============================================================
 // Main Code
-// =============================================================
+
 readFile();
 
 app.listen(PORT, function (){
