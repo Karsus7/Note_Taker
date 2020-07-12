@@ -4,7 +4,7 @@ const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
 
-// activeNote is used to keep track of the note in the textarea
+// activeNote keeps track of the text in the text area
 let activeNote = {};
 
 // A function for getting all notes from the db
@@ -91,8 +91,7 @@ const handleNewNoteView = function () {
   renderActiveNote();
 };
 
-// If a note's title or text are empty, hide the save button
-// Or else show it
+// The save button is hidden if a note's title or text are empty
 const handleRenderSaveBtn = function () {
   if (!$noteTitle.val().trim() || !$noteText.val().trim()) {
     $saveNoteBtn.hide();
@@ -101,10 +100,11 @@ const handleRenderSaveBtn = function () {
   }
 };
 
-// Render's the list of note titles
+// Render's the list of note titles in the sidebar
 const renderNoteList = (notes) => {
   $noteList.empty();
 
+  // Below variable sets array for sidebar items
   const noteListItems = [];
 
   // Returns jquery object for li with given text and delete button

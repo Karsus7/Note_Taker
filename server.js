@@ -4,7 +4,7 @@ var fs = require("fs");
 
 
 // Express App Code
-// =========================================
+
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -19,9 +19,7 @@ app.use(express.static(__dirname + '/public'));
 // Notes array
 const notes = [];
 
-// =============================================================
 // Functions
-// =============================================================
 
 function writeFile(){
     fs.writeFile('./db/db.json',JSON.stringify(notes, null, 2),'utf8', function(err){
@@ -37,9 +35,7 @@ function readFile(){
     });
 }
 
-// =============================================================
 // HTML Routes
-// =============================================================
 
 // Index
 app.get("/", function(req, res){
@@ -51,9 +47,7 @@ app.get("/notes", function(req, res){
     res.sendFile(path.join(__dirname , 'public' , 'notes.html'));
 });
 
-// =============================================================
 // API Routes
-// =============================================================
 
 // note api get
 app.get('/api/notes', function (req, res){
@@ -91,8 +85,7 @@ app.get('*', function(req, res){
     res.sendFile(path.join(__dirname , 'public' , 'index.html'));
 });
 
-// Main Code
-
+// Below code triggers readFile
 readFile();
 
 app.listen(PORT, function (){
